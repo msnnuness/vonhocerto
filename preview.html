@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vinho Certo — Escolha o vinho certo para cada ocasião</title>
+  <meta name="description" content="Descubra bons vinhos para seu orçamento, gosto e ocasião. Seleção de vinhos de até R$60 e recomendações simples para escolher melhor." />
+  <style>
+    :root{
+      --bg:#13090d;
+      --bg2:#1b0d13;
+      --card:#231018;
+      --card2:#2e1420;
+      --wine:#7b1734;
+      --wine2:#9e2446;
+      --gold:#d8b36a;
+      --cream:#f7efe6;
+      --muted:#c8b8ba;
+      --white:#fff;
+      --green:#2ecb77;
+      --shadow:0 20px 60px rgba(0,0,0,.35);
+      --radius:24px;
+      --max:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:linear-gradient(180deg,var(--bg),#10070a 55%,#0c0507 100%);
+      color:var(--cream);
+      line-height:1.55;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(calc(100% - 32px),var(--max));margin:auto}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:88px 0 64px;
+      background:
+        radial-gradient(circle at 85% 20%,rgba(216,179,106,.15),transparent 25%),
+        radial-gradient(circle at 10% 20%,rgba(158,36,70,.2),transparent 28%),
+        linear-gradient(180deg,#1a0b12 0%,var(--bg) 100%);
+    }
+    .hero:before{
+      content:"";
+      position:absolute;inset:auto -120px -160px auto;
+      width:420px;height:420px;border-radius:50%;
+      background:radial-gradient(circle,rgba(123,23,52,.35),transparent 68%);
+      filter:blur(14px)
+    }
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid rgba(216,179,106,.3);background:rgba(216,179,106,.08);border-radius:999px;color:#efd39a;font-size:14px;font-weight:700;letter-spacing:.02em}
+    h1,h2,h3{line-height:1.08;margin:0 0 18px}
+    h1{font-size:clamp(42px,6vw,78px);letter-spacing:-.04em}
+    h2{font-size:clamp(34px,4.5vw,56px);letter-spacing:-.03em}
+    h3{font-size:24px}
+    .gold{color:var(--gold)}
+    .lead{font-size:clamp(18px,2vw,23px);color:#dfd1d3;max-width:700px;margin:0 0 28px}
+    .hero-points{display:grid;gap:10px;margin:24px 0 30px;color:#e7dbdc}
+    .hero-points div{display:flex;gap:10px;align-items:flex-start}
+    .check{color:var(--gold);font-weight:900}
+    .cta{display:inline-flex;justify-content:center;align-items:center;gap:10px;background:linear-gradient(180deg,#e3bd73,#c9943c);color:#1a0b12;font-weight:900;padding:17px 24px;border-radius:14px;box-shadow:0 12px 34px rgba(216,179,106,.22);transition:.2s transform,.2s filter;font-size:17px;text-align:center}
+    .cta:hover{transform:translateY(-2px);filter:brightness(1.05)}
+    .subcta{font-size:13px;color:#bfaeb1;margin-top:10px}
+    .mockup{
+      background:linear-gradient(180deg,#2d1520,#1d0d13);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      border-radius:32px;
+      padding:18px;
+      transform:rotate(1.5deg);
+    }
+    .phone{background:#fff;color:#281119;border-radius:24px;padding:18px;min-height:530px}
+    .phone-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .brand{font-weight:900;font-size:20px;color:#711630}.brand span{color:#b98b39}
+    .quiz-card{background:#fbf5ef;border:1px solid #eaded3;border-radius:18px;padding:18px;margin-bottom:14px}
+    .quiz-card small{color:#7b6c6f;font-weight:700}.quiz-card h4{margin:6px 0 12px;font-size:19px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}.chip{background:#fff;border:1px solid #dccbc0;padding:9px 11px;border-radius:999px;font-size:13px;font-weight:700}
+    .result{background:linear-gradient(135deg,#711630,#972845);color:#fff;border-radius:18px;padding:18px}.result b{color:#f4d497}.rating{display:flex;gap:6px;align-items:center;margin-top:8px;color:#ffe19a;font-weight:800}
+    section{padding:76px 0}
+    .section-head{max-width:780px;margin:0 auto 42px;text-align:center}.section-head p{color:var(--muted);font-size:18px;margin:0}
+    .pain-grid,.feature-grid,.bonus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg,var(--card),#1b0c12);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:26px;box-shadow:0 8px 28px rgba(0,0,0,.15)}
+    .icon{font-size:34px;margin-bottom:12px}.card p{color:var(--muted);margin-bottom:0}
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step}
+    .step{position:relative;background:#f7efe6;color:#2b121a;border-radius:22px;padding:24px;min-height:190px}.step:before{counter-increment:step;content:counter(step);position:absolute;right:18px;top:16px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#711630;color:#fff;font-weight:900}.step h3{font-size:20px;padding-right:40px}.step p{color:#6f5d62}
+    .ranking{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}.list{display:grid;gap:11px}.list div{display:flex;gap:10px;color:#dfd1d3}.sample-list{display:grid;gap:10px;background:#f7efe6;color:#2b121a;padding:20px;border-radius:22px}.wine-row{display:grid;grid-template-columns:46px 1fr auto;gap:12px;align-items:center;background:#fff;border:1px solid #e9ddd4;padding:12px;border-radius:15px}.bottle{width:34px;height:72px;border-radius:9px 9px 5px 5px;background:linear-gradient(180deg,#42141d,#13080b);position:relative;margin:auto}.bottle:before{content:"";position:absolute;width:12px;height:18px;top:-14px;left:11px;background:#240b10;border-radius:3px}.wine-row strong{display:block}.wine-row small{color:#7d6e70}.price{font-weight:900;color:#711630}
+    .occasion-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.occasion{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px;text-align:center;font-weight:800}.occasion span{display:block;font-size:30px;margin-bottom:6px}
+    .offer-wrap{background:linear-gradient(135deg,#7b1734,#4b1023);border:1px solid rgba(255,255,255,.12);border-radius:30px;padding:38px;box-shadow:var(--shadow);text-align:center}.old{color:#d1bfc3;text-decoration:line-through;font-size:22px}.price-big{font-size:clamp(48px,8vw,82px);font-weight:950;line-height:1;color:#f5d18b;margin:8px 0 14px}.payment{color:#eadde0;font-weight:700}.guarantee{margin:18px auto 0;max-width:620px;color:#d9c7cb;font-size:14px}
+    .faq{display:grid;gap:12px;max-width:860px;margin:auto}.faq details{background:var(--card);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px 20px}.faq summary{cursor:pointer;font-weight:850}.faq p{color:var(--muted)}
+    footer{padding:36px 0 60px;text-align:center;color:#9d8e91;font-size:13px}
+    .sticky{display:none}
+    @media(max-width:900px){
+      .hero{padding-top:52px}.hero-grid,.ranking{grid-template-columns:1fr}.mockup{max-width:560px;margin:auto;transform:none}.pain-grid,.feature-grid,.bonus-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.occasion-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:620px){
+      .container{width:min(calc(100% - 22px),var(--max))}.hero{padding:34px 0 44px}h1{font-size:44px}.lead{font-size:18px}.cta{width:100%;padding:16px}.mockup{padding:10px;border-radius:24px}.phone{min-height:auto}.pain-grid,.feature-grid,.bonus-grid,.steps,.occasion-grid{grid-template-columns:1fr}.card{padding:22px}.step{min-height:auto}.offer-wrap{padding:26px 18px}.sticky{display:block;position:fixed;left:0;right:0;bottom:0;padding:10px;background:rgba(13,5,8,.94);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,.08);z-index:30}.sticky .cta{font-size:15px;padding:14px}.hero{padding-bottom:24px}footer{padding-bottom:100px}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">🍷 CURADORIA SIMPLES • 18+</div>
+        <h1>Você não precisa entender de vinho. <span class="gold">Só precisa saber qual comprar.</span></h1>
+        <p class="lead">Descubra bons vinhos para o seu orçamento, gosto e ocasião — sem ficar perdido olhando dezenas de garrafas na prateleira.</p>
+        <div class="hero-points">
+          <div><span class="check">✓</span><span>Seleção de 30 vinhos com bom custo-benefício de até R$60</span></div>
+          <div><span class="check">✓</span><span>Recomendações para jantar, churrasco, presente, massas e muito mais</span></div>
+          <div><span class="check">✓</span><span>Explicações simples, sem termos complicados</span></div>
+        </div>
+        <a class="cta" href="https://SEU-LINK-DE-CHECKOUT.com" target="_blank" rel="noopener">QUERO ACESSAR O VINHO CERTO →</a>
+        <div class="subcta">Pagamento único • Acesso digital • Funciona no celular</div>
+      </div>
+      <div class="mockup" aria-label="Prévia do aplicativo Vinho Certo">
+        <div class="phone">
+          <div class="phone-top"><div class="brand">VINHO <span>CERTO</span></div><div>🍷</div></div>
+          <div class="quiz-card"><small>PASSO 1</small><h4>Quanto você quer gastar?</h4><div class="chips"><div class="chip">Até R$30</div><div class="chip">Até R$40</div><div class="chip">Até R$50</div><div class="chip">Até R$60</div></div></div>
+          <div class="quiz-card"><small>PASSO 2</small><h4>Qual é a ocasião?</h4><div class="chips"><div class="chip">🥩 Churrasco</div><div class="chip">❤️ Encontro</div><div class="chip">🎁 Presente</div><div class="chip">🍝 Jantar</div></div></div>
+          <div class="result"><small>RECOMENDAÇÃO</small><h4 style="margin:6px 0 8px;font-size:22px">Encontramos boas opções para você</h4><div>Compare estilo, faixa de preço e ocasião antes de escolher.</div><div class="rating">★★★★★ <span style="color:#fff;font-weight:700">custo-benefício</span></div></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="section-head"><h2>Quantas vezes você já ficou sem saber <span class="gold">qual vinho levar?</span></h2><p>Para quem não entende muito de vinho, ter dezenas de opções não ajuda. Só deixa a escolha mais confusa.</p></div>
+      <div class="pain-grid">
+        <div class="card"><div class="icon">🏷️</div><h3>“Esse de R$39 é bom?”</h3><p>Preço sozinho não explica se um rótulo faz sentido para o seu gosto ou ocasião.</p></div>
+        <div class="card"><div class="icon">🥩</div><h3>“Combina com churrasco?”</h3><p>Você quer escolher algo que faça sentido para o momento sem precisar pesquisar por horas.</p></div>
+        <div class="card"><div class="icon">🎁</div><h3>“Qual eu levo de presente?”</h3><p>Uma situação comum que fica muito mais simples quando você tem boas referências à mão.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#f7efe6;color:#2a1119">
+    <div class="container">
+      <div class="section-head"><h2>Diga a ocasião. Escolha seu orçamento. <span style="color:#7b1734">Encontre boas opções.</span></h2><p style="color:#6f5d62">O Vinho Certo organiza a escolha em poucos passos.</p></div>
+      <div class="steps">
+        <div class="step"><h3>Quanto quer gastar?</h3><p>Escolha sua faixa: até R$30, R$40, R$50 ou R$60.</p></div>
+        <div class="step"><h3>Qual é a ocasião?</h3><p>Jantar, churrasco, presente, pizza, massas, encontro e outras situações.</p></div>
+        <div class="step"><h3>Qual estilo prefere?</h3><p>Mais leve, frutado, seco, encorpado ou “não sei”.</p></div>
+        <div class="step"><h3>Compare as opções</h3><p>Veja indicações, perfil, harmonização e faixa de preço antes de decidir.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container ranking">
+      <div>
+        <div class="eyebrow">⭐ TOP 30 ATÉ R$60</div>
+        <h2>Uma seleção para quem quer <span class="gold">comprar sem complicação.</span></h2>
+        <p class="lead" style="font-size:18px">Comece por uma lista de rótulos organizados pelo custo-benefício e veja rapidamente quais fazem mais sentido para você.</p>
+        <div class="list">
+          <div><span class="check">✓</span><span>Faixa de preço</span></div>
+          <div><span class="check">✓</span><span>Tipo e uva</span></div>
+          <div><span class="check">✓</span><span>País de origem</span></div>
+          <div><span class="check">✓</span><span>Perfil de sabor</span></div>
+          <div><span class="check">✓</span><span>Ocasiões indicadas</span></div>
+          <div><span class="check">✓</span><span>Harmonizações</span></div>
+        </div>
+      </div>
+      <div class="sample-list">
+        <div class="wine-row"><div class="bottle"></div><div><strong>Exemplo de seleção</strong><small>Tinto • Frutado • Fácil de beber</small></div><div class="price">R$39–49</div></div>
+        <div class="wine-row"><div class="bottle"></div><div><strong>Exemplo de seleção</strong><small>Branco • Leve • Refrescante</small></div><div class="price">R$34–44</div></div>
+        <div class="wine-row"><div class="bottle"></div><div><strong>Exemplo de seleção</strong><small>Tinto • Mais encorpado</small></div><div class="price">R$49–59</div></div>
+        <div class="wine-row"><div class="bottle"></div><div><strong>Exemplo de seleção</strong><small>Espumante • Comemorações</small></div><div class="price">R$42–58</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:30px">
+    <div class="container">
+      <div class="section-head"><h2>Um vinho para <span class="gold">cada momento.</span></h2><p>Use a ocasião como ponto de partida e encontre sugestões mais relevantes.</p></div>
+      <div class="occasion-grid">
+        <div class="occasion"><span>🥩</span>Churrasco</div><div class="occasion"><span>❤️</span>Encontro</div><div class="occasion"><span>🎁</span>Presente</div><div class="occasion"><span>🍝</span>Jantar</div>
+        <div class="occasion"><span>🍕</span>Pizza</div><div class="occasion"><span>🧀</span>Queijos</div><div class="occasion"><span>🥂</span>Comemoração</div><div class="occasion"><span>🏠</span>Receber amigos</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head"><h2>E você ainda recebe <span class="gold">3 bônus.</span></h2></div>
+      <div class="bonus-grid">
+        <div class="card"><div class="icon">🍕</div><h3>Guia rápido de harmonização</h3><p>Referências simples para carnes, massas, pizza, peixes, queijos e sobremesas.</p></div>
+        <div class="card"><div class="icon">🍷</div><h3>Guia “Não Passe Vergonha”</h3><p>Temperatura, taças, como servir, abrir, guardar e erros comuns.</p></div>
+        <div class="card"><div class="icon">🏆</div><h3>10 Vinhos Coringa</h3><p>Uma seleção rápida para consultar quando estiver com pressa e quiser boas referências.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container offer-wrap">
+      <div class="eyebrow" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#fff">ACESSO COMPLETO</div>
+      <h2 style="margin-top:16px">Chega de escolher vinho <span style="color:#f2d292">pela embalagem.</span></h2>
+      <p style="max-width:700px;margin:0 auto 20px;color:#eadde0;font-size:18px">Tenha uma ferramenta simples para consultar quando quiser encontrar opções para seu bolso, gosto e ocasião.</p>
+      <div class="old">De R$59,90</div>
+      <div class="price-big">R$19,90</div>
+      <div class="payment">Pagamento único</div>
+      <div style="margin-top:24px"><a class="cta" href="https://SEU-LINK-DE-CHECKOUT.com" target="_blank" rel="noopener">QUERO MEU ACESSO →</a></div>
+      <div class="guarantee">🔒 Pagamento seguro • 📱 Acesso digital • 🍷 Conteúdo destinado a maiores de 18 anos</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head"><h2>Dúvidas frequentes</h2></div>
+      <div class="faq">
+        <details><summary>Preciso entender de vinho?</summary><p>Não. A proposta é justamente facilitar a escolha para quem quer orientações simples e práticas.</p></details>
+        <details><summary>Só existem vinhos de até R$60?</summary><p>O destaque principal é a seleção nessa faixa de preço, além das recomendações organizadas por ocasião, gosto e necessidade disponíveis dentro do produto.</p></details>
+        <details><summary>Funciona no celular?</summary><p>Sim. A experiência foi pensada para funcionar muito bem no celular, inclusive durante uma compra.</p></details>
+        <details><summary>Existe mensalidade?</summary><p>Não. A oferta atual é de pagamento único.</p></details>
+        <details><summary>Os preços dos vinhos são sempre iguais?</summary><p>Não. Preços e disponibilidade podem variar conforme loja, cidade, estoque e promoções. As faixas exibidas servem como referência.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:24px">
+    <div class="container" style="text-align:center">
+      <h2>Você não precisa entender de vinho para <span class="gold">escolher melhor.</span></h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Descubra opções para o seu bolso, gosto e ocasião.</p>
+      <a class="cta" href="https://SEU-LINK-DE-CHECKOUT.com" target="_blank" rel="noopener">ACESSAR O VINHO CERTO →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Produto destinado a maiores de 18 anos. As informações possuem caráter educativo e de curadoria. Preços e disponibilidade podem variar. Beba com moderação.</div>
+  </footer>
+
+  <div class="sticky"><a class="cta" href="https://SEU-LINK-DE-CHECKOUT.com" target="_blank" rel="noopener">ACESSAR POR R$19,90 →</a></div>
+</body>
+</html>
